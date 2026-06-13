@@ -48,6 +48,6 @@ jobs:
           sudo docker rm web-app || true
           sudo docker run -d --name web-app -p 3005:3000 manojnoochila/ci-cd:latest
 
-    - name: Skip deploy when deployment secrets are missing
+    - name: Notify deployment skipped when secrets are missing
       if: env.HAS_DEPLOY_SECRETS != 'true'
-      run: echo "Skipping image push/deploy because one or more required deployment secrets are not configured."
+      run: echo "Skipping deployment because one or more required deployment secrets are not configured."
